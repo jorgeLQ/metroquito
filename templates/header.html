@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>
+        {% block title %} Metro de Quito {%endblock%}
+
+    </title>
+  </head>
+  <body>
+    <div style="float: left;">
+      <span style="text-align: left; height: 45px; padding-left: 10px; font-size: 25px;">Análisis de Opiniones Basado en Tweets</span><br>
+      <span style="text-align: left; height: 45px; padding-left: 10px; font-size: 25px; font-weight: bold;">Metro de Quito</span>
+    </div>
+    <div style="text-align: right;">
+      <img src="static/images/metro_logo.png" style="width: 72px; padding-top: 5px; padding-right: 10px;"><br>
+      <span>FECHA DE CORTE: 15/01/2023</span>
+    </div>
+    <hr style="background-color: red; height: 2px;">
+      {% block content %}
+
+      {%endblock%}
+
+  </body>
+</html>

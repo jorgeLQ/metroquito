@@ -1,0 +1,68 @@
+{% extends 'header.html' %}
+
+{% block content%}
+
+  <div style="text-align: right;">
+    <table style="width: 100%; margin-left: auto; margin-right: auto; text-align: center; height: 800px; background-image: url(static/images/f4.png); background-repeat: no-repeat; background-size: 100% 100%;">
+      <tbody>
+        <tr style="height: 50px;">
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td style="width: 6%;"></td>
+          <td style="height: 20px;">
+            <a href="augustobarrera/" target="_blank">
+              <img src="{{ url_for('static', filename='images/Barrera.png')}}" style="width: 180px;">
+            </a>
+            <p style="font-weight: bold; font-size: 19px;">Augusto Barrera</p><p>31/07/2009 - 14/05/2014</p>
+
+            <div style="text-align: left;">
+              <img src="{{ url_for('static', filename='images/twitter.png')}}" style="width: 40px;">
+              <span style="font-size: 20px;"> {{c1b}}</span><hr>
+              <img src="{{ url_for('static', filename='images/smile.png')}}" style="width: 40px;">
+              <span style="font-size: 20px;"> {{num_P_percent_str}}</span><p></p>
+              <img src="{{ url_for('static', filename='images/sad-face.png')}}" style="width: 40px;">
+              <span style="font-size: 20px;"> {{num_N_percent_str}}</span>
+            </div>
+          </td><td style="width: 6%;"></td>
+
+          <td style="height: 20px;">
+            <img src="{{ url_for('static', filename='images/Rodas.png')}}" style="width: 180px;"><p style="font-weight: bold; font-size: 19px;">Mauricio Rodas</p><p>14/05/2014 - 14/05/2019</p>
+            <div style="text-align: left;">
+              <img src="{{ url_for('static', filename='images/twitter.png')}}" style="width: 40px;">
+              <span style="font-size: 20px;"> 10244</span><hr>
+              <img src="{{ url_for('static', filename='images/smile.png')}}" style="width: 40px;">
+              <span style="font-size: 20px;"> 40%</span><p></p>
+              <img src="{{ url_for('static', filename='images/sad-face.png')}}" style="width: 40px;">
+              <span style="font-size: 20px;"> 60%</span>
+            </div>
+          </td><td style="width: 7%;"></td>
+
+          <td style="height: 20px;">
+            <img src="{{ url_for('static', filename='images/Yunda.png')}}" style="width: 180px;"><p style="font-weight: bold; font-size: 19px;">Jorge Yunda</p><p>14/05/2019 - 29/09/2021</p>
+            <div style="text-align: left;">
+              <img src="{{ url_for('static', filename='images/twitter.png')}}" style="width: 40px;">
+              <span style="font-size: 20px;"> 10244</span><hr>
+              <img src="{{ url_for('static', filename='images/smile.png')}}" style="width: 40px;">
+              <span style="font-size: 20px;"> 40%</span><p></p>
+              <img src="{{ url_for('static', filename='images/sad-face.png')}}" style="width: 40px;">
+              <span style="font-size: 20px;"> 60%</span>
+            </div>
+          </td><td style="width: 7%;"></td>
+
+          <td style="height: 20px;">
+            <img src="{{ url_for('static', filename='images/Guarderas.png')}}" style="width: 180px;"><p style="font-weight: bold; font-size: 19px;">Santiago Guarderas</p><p>30/09/2021 - 15/01/2023</p>
+            <div style="text-align: left;">
+              <img src="{{ url_for('static', filename='images/twitter.png')}}" style="width: 40px;">
+              <span style="font-size: 20px;"> 10244</span><hr>
+              <img src="{{ url_for('static', filename='images/smile.png')}}" style="width: 40px;">
+              <span style="font-size: 20px;"> 40%</span><p></p>
+              <img src="{{ url_for('static', filename='images/sad-face.png')}}" style="width: 40px;">
+              <span style="font-size: 20px;"> 60%</span>
+            </div>
+          </td>
+
+          <td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+        </div>
+
+{%endblock%}

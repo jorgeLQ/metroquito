@@ -237,12 +237,12 @@ def create_dash_application(flask_app):
                                             html.Span(" Total Positivos ",style=NAME_ALCALDE),
 
                                             html.Span(num_Pc1, style={'font-size': '30px'}),
-                                            dbc.Progress(num_P_percent_str, value=num_P_percent, color="#2bc58b", style={'height': '35px','font-size': '20px'}),
+                                            dbc.Progress(label=num_P_percent_str, value=num_P_percent, color="#2bc58b",style={'height': '35px','font-size': '20px'}),
                                         ],className='col-xl-6 col-md-6 mb-6'),
                                     ],className='row no-gutters text-center'),
 
                                 ],className='card-body'),
-                            ],className='card shadow h-100 py-2'),
+                            ],className='card border-left-success shadow h-100 py-2'),
                         ],className='col-xl-3 col-md-6 mb-3'),
 
                         html.Div([
@@ -255,7 +255,7 @@ def create_dash_application(flask_app):
                                         html.Div([
                                             html.Span(" Total Negativos ",style=NAME_ALCALDE),
                                             html.Span(num_Nc1, style={'font-size': '30px'}),
-                                            dbc.Progress(num_N_percent_str, value=num_N_percent, color="#f44d4d", style={'height': '35px','font-size': '20px'}),
+                                            dbc.Progress(label=num_N_percent_str, value=num_N_percent, color="#f44d4d", style={'height': '35px','font-size': '20px'}),
                                         ],className='col-xl-6 col-md-6 mb-6'),
                                     ],className='row no-gutters text-center'),
                                 ],className='card-body'),

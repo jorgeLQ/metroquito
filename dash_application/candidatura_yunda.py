@@ -113,8 +113,11 @@ def create_bar_polarity():
     df_pivot = c1.pivot_table(index=[c1['Date'].dt.year, 'Id'], columns='Sentimental_Analysis', aggfunc='size', fill_value=0)
     df_grouped = df_pivot.groupby(level=0).sum()
 
-    trace1 = go.Bar(x=df_grouped.index, y=df_grouped['P'], name='P', marker=dict(color='#2bc58b'),text=df_grouped['P'].astype(str))
-    trace2 = go.Bar(x=df_grouped.index, y=df_grouped['N'], name='N', marker=dict(color='#f44d4d'),text=df_grouped['N'].astype(str))
+    df_grouped = df_grouped.reset_index()
+    df_grouped['Date'] = pd.to_datetime(df_grouped['Date'], format='%Y')
+
+    trace1 = go.Bar(x=df_grouped['Date'].dt.strftime('%Y'), y=df_grouped['P'], name='P', marker=dict(color='#2bc58b'),text=df_grouped['P'].astype(str))
+    trace2 = go.Bar(x=df_grouped['Date'].dt.strftime('%Y'), y=df_grouped['N'], name='N', marker=dict(color='#f44d4d'),text=df_grouped['N'].astype(str))
     data = [trace1, trace2]
     layout = go.Layout(title='Análisis de Sentimiento por Año', title_x=0.5, font=dict(size=18),barmode='stack', xaxis=dict(title='Año'), yaxis=dict(title='Cantidad'))
     fig = go.Figure(data=data, layout=layout)
@@ -134,11 +137,13 @@ def create_topics():
     df_grouped['P_percent'] = round(df_grouped['P'] / df_grouped['Total'] * 100, 2)
     df_grouped['N_percent'] = round(df_grouped['N'] / df_grouped['Total'] * 100, 2)
 
+    df_grouped = df_grouped.reset_index()
+    df_grouped = df_grouped.loc[df_grouped['topic_name'] != '*']
 
     fig = go.Figure(data=[
         go.Bar(
             name='Positivo',
-            y=df_grouped.index.tolist(),
+            y=df_grouped['topic_name'],
             x=df_grouped['P_percent'],
             orientation='h',
             text=df_grouped['P_percent'].astype(str) + '%',
@@ -147,7 +152,7 @@ def create_topics():
         ),
         go.Bar(
             name='Negativo',
-            y=df_grouped.index.tolist(),
+            y=df_grouped['topic_name'],
             x=df_grouped['N_percent'],
             orientation='h',
             text=df_grouped['N_percent'].astype(str) + '%',
@@ -160,8 +165,8 @@ def create_topics():
         title='Análisis de Sentimiento por tópico', title_x=0.5,font=dict(size=18), height=600,
         yaxis=dict(
             tickmode="array",
-            tickvals=df_grouped.index.tolist(),
-            ticktext=df_grouped.index.tolist(),
+            tickvals=df_grouped['topic_name'],
+            ticktext=df_grouped['topic_name'],
             side='left'
         )
     )
@@ -307,7 +312,7 @@ def create_dash_application3(flask_app):
                             html.Div([
                                 html.Div([
                                     html.Div([
-                                        html.P('Nube de palabras',style={'font-size':'25px','color': '#304463','padding-left': '26%'}),
+                                        html.P('Nube de palabras',style={'font-size':'25px','color': '#304463','padding-left': '10%'}),
                                         html.Img(src=('../static/images/word_cloud_c3.png'),style={'width': '100%','height': '365px'}),
                                     ],className='row no-gutters text-center'),
                                 ],className='card-body'),

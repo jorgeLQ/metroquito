@@ -1,0 +1,7 @@
+flask
+dash
+Plotly
+pandas
+openpyxl
+dash-bootstrap-components
+wordcloud

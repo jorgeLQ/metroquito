@@ -112,9 +112,11 @@ def create_hbar():
 def create_bar_polarity():
     df_pivot = c1.pivot_table(index=[c1['Date'].dt.year, 'Id'], columns='Sentimental_Analysis', aggfunc='size', fill_value=0)
     df_grouped = df_pivot.groupby(level=0).sum()
+    df_grouped = df_grouped.reset_index()
+    df_grouped['Date'] = pd.to_datetime(df_grouped['Date'], format='%Y')
 
-    trace1 = go.Bar(x=df_grouped.index, y=df_grouped['P'], name='P', marker=dict(color='#2bc58b'),text=df_grouped['P'].astype(str))
-    trace2 = go.Bar(x=df_grouped.index, y=df_grouped['N'], name='N', marker=dict(color='#f44d4d'),text=df_grouped['N'].astype(str))
+    trace1 = go.Bar(x=df_grouped['Date'].dt.strftime('%Y'), y=df_grouped['P'], name='P', marker=dict(color='#2bc58b'),text=df_grouped['P'].astype(str))
+    trace2 = go.Bar(x=df_grouped['Date'].dt.strftime('%Y'), y=df_grouped['N'], name='N', marker=dict(color='#f44d4d'),text=df_grouped['N'].astype(str))
     data = [trace1, trace2]
     layout = go.Layout(title='Análisis de Sentimiento por Año', title_x=0.5, font=dict(size=18),barmode='stack', xaxis=dict(title='Año'), yaxis=dict(title='Cantidad'))
     fig = go.Figure(data=data, layout=layout)
@@ -307,7 +309,7 @@ def create_dash_application(flask_app):
                             html.Div([
                                 html.Div([
                                     html.Div([
-                                        html.P('Nube de palabras',style={'font-size':'25px','color': '#304463','padding-left': '26%'}),
+                                        html.P('Nube de palabras',style={'font-size':'25px','color': '#304463','padding-left': '10%'}),
                                         html.Img(src=('../static/images/word_cloud_c1.png'),style={'width': '100%','height': '365px'}),
                                     ],className='row no-gutters text-center'),
                                 ],className='card-body'),
